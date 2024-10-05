@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>Veome Kapil: Research</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+            <div id="wrapper">
+
+                <!-- Main -->
+                    <div id="main">
+                        <div class="inner">
+
+                            <!-- Header -->
+                                <header id="header">
+                                    <a href="index.html" class="logo"><strong>Veome</strong> Kapil</a>
+                                    <ul class="icons">
+                                        <li><a href="https://github.com/veome22" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                                        <li><a href="https://orcid.org/0000-0001-7344-5260" class="icon brands fa-orcid"><span class="label">ORCid</span></a></li>
+                                        <li><a href="mailto: vkapil1@jh.edu" class="icon regular fa-envelope"><span class="label">Mail</span></a></li>
+                                        <li><a href="https://www.instructables.com/member/vmathur3/instructables/" class="icon solid fa-robot"><span class="label">Instructables</span></a></li>
+                                    </ul>
+                                </header>
+
+                            <!-- Banner -->
+                                <br>
+                                <div class="content">
+                                    <header>
+                                    
+                                        <h1>Calibration of neutron star natal kick velocities to isolated pulsar observations</h1>
+                                        <p>Veome Kapil, Ilya Mandel, Emanuele Berti, Bernhard Müller</p>
+                                        <ul class="actions">
+                                            <li><a href="https://academic.oup.com/mnras/article/519/4/5893/6979832" class="button">Published Version</a></li>
+                                            <li><a href="https://arxiv.org/abs/2209.09252" class="button">ArXiv Version</a></li>	
+                                        </ul>
+                                        <span class="image fit"><img src="images/supernova.webp" alt="Credit: https://scitechdaily.com/resurrecting-history-the-unexpected-revival-of-supernova-1181/" style="width: 100%; height: 300px; object-fit: cover;"/>
+                                        </span>
+                                    </header>
+                                </div>
+
+                            <!-- Main Content -->
+                                <section>
+                                    <h2>Abstract</h2>
+                                    <p>
+                                        Current prescriptions for supernova natal kicks in rapid binary population synthesis simulations are based on fits of simple functions to single pulsar velocity data. We explore a new parameterization of natal kicks received by neutron stars in isolated and binary systems developed by Mandel & Müller, which is based on 1D models and 3D supernova simulations, and accounts for the physical correlations between progenitor properties, remnant mass, and the kick velocity. We constrain two free parameters in this model using very long baseline interferometry velocity measurements of Galactic single pulsars. We find that the inferred values of natal kick parameters do not differ significantly between single and binary evolution scenarios. The best-fit values of these parameters are <span style="font-variant: small-caps;">v<sub>ns</sub></span> = 520 km/s for the scaling pre-factor for neutron star kicks, and <span style="font-variant: small-caps;">σ<sub>ns</sub></span> = 0.3 for the fractional stochastic scatter in the kick velocities.
+                                    </p>
+                                </section>
+                                <!-- Research Summary Section -->
+                                <section>
+                                    <section>
+                                        <h2>🌌 Neutron star kicks and the MM20 model</h2>
+                                        <p>Supernovae can impart a “kick” to neutron stars, influencing their trajectories and fate in binary systems.</p>
+                                        <p>The <a href="https://academic.oup.com/mnras/article/499/3/3214/5917424">Mandel & Müller (2020)</a> (MM20) model represents a significant advancement in our understanding of supernova kicks and their impact on neutron star dynamics. Unlike other analytic models such as the <strong>Maxwellian model</strong>, which relies on a simplistic assumption of kick velocity distributions, the MM20 model incorporates recent simulation data and a more nuanced approach to account for asymmetries in supernova explosions. This enhancement allows for a more accurate depiction of how neutron stars acquire kicks during supernova events, leading to improved predictions of their behavior in binary systems.</p>
+                                        <img class="plot" src="images/supernova_plots/kick_models.png" height="400" alt="Plot illustrating the NS kick distribution under MM20 model vs the classic Maxwellian model." />
+                                    </section>
+
+                                    <section>
+                                        <h2>📈 Constraining the MM20 model using pulsar observations</h2>
+                                        <p>The MM20 model contains 2 free parameters: <span style="font-variant: small-caps;">v<sub>ns</sub></span> and <span style="font-variant: small-caps;">σ<sub>ns</sub></span>. To validate and constrain the MM20 model, we turned to a state-of-the-art dataset of observed single pulsar velocities. By comparing the model's predictions with real-world pulsar data using <strong>Bayesian inference</strong>, we can identify the most likely configurations of the kick model.</p>
+
+                                        <p>We simulated a population of stars in <a href="https://compas.science/"><strong>COMPAS</strong></a>, an open source population synthesis software, where we evolved the stars until they experience a supernova explosion, get kicked in accordance with the MM20 model at a given configuration, and formed single pulsars. After repeating this process for a range of parameter configurations, we can compute the relative likelihoods over the parameter space.</p>
+                                        <img class="plot" src="images/supernova_plots/parameters.png" height="400" alt="Bayesian inference resutls." />
+
+                                        <p><strong>Fun fact:</strong> We simulated populations of stars in isolation as well as in binaries, and found that the evolutionary histories of the progenitor stars had a surprisingly minimal impact on the final isolated neutron star velocity distributions! This finding suggests that the dynamics of the supernova kicks are more influential than the specific evolutionary pathways taken by stars for determining the final velocities.</p>
+                                    </section>
+
+                                    <section>
+                                        <h2>📊 Are the models any good?</h2>
+                                        <p>In order to verify that the models were sensible, we must compare the predicted neutron star velocity distributions against the observed data. For this, we used the followinf statistical tools:
+                                        <ul>
+                                            <li><strong>Bootstrapping:</strong> Used to generate hundreds realizaitions of predicted velocity distributions, and thus capture their inherent uncertainty.</li>
+                                            <li><strong>Kolmogorov-Smirnov Test:</strong> Statistical comparison of two given data sets to determine whether they are mutually compatible.</li>
+                                        </ul>
+        
+                                        <img src="images/supernova_plots/kstest.png" height="500" alt="Cumulative Distribution Functions of the best-fit MM20 models, compared to pulsar data." />
+                                        <p>The KS tests showed that the predicted velocity distributions are compatible with observations!</p>
+
+                                    </section>
+
+                                    <section>
+                                        <h2>🧩Binary Neutron Star (BNS) Simulation: The Impact of Model Evolution</h2>
+                                        <p>To further investigate the implications of the new model, we conducted simulations of binary neutron star (BNS) populations. The results indicated a notable difference between the BNS event rates predicted by the MM20 model and those from the Maxwellian model. Specifically, the MM20 model predicts a more accurate representation of the expected detection rates, demonstrating its efficacy in predicting the behavior of neutron stars formed in binary systems. This highlights the importance of incorporating realistic kick models in astrophysical simulations, ultimately improving our understanding of neutron star populations and their role in the universe.</p>
+                                        <table style="width: 50%; margin: auto; border-collapse: collapse;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="border: 1px solid black; padding: 8px;">Natal Kick Model</th>
+                                                    <th style="border: 1px solid black; padding: 8px;">BNS Detection Rate (yr<sup>-1</sup>)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border: 1px solid black; padding: 8px;">MM20</td>
+                                                    <td style="border: 1px solid black; padding: 8px;">0.09 ± 0.01</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="border: 1px solid black; padding: 8px;">Maxwellian</td>
+                                                    <td style="border: 1px solid black; padding: 8px;">0.14 ± 0.02</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+
+                                    </section>
+                                    
+                        </div>
+                    </div>
+
+                <!-- Sidebar -->
+                    <div id="sidebar">
+                        <div class="inner">
+
+                            <!-- Search -->
+                                <section id="search" class="alt">
+                                    <form method="post" action="#">
+                                        <input type="text" name="query" id="query" placeholder="Search" />
+                                    </form>
+                                </section>
+
+                            <!-- Menu -->
+                                <nav id="menu">
+                                    <header class="major">
+                                        <h2>Menu</h2>
+                                    </header>
+                                    <ul>
+                                        <li><a href="index.html">Homepage</a></li>
+                                        <li>
+                                            <span class="opener">Research</span>
+                                            <ul>
+                                                <li><a href="research.html#header">Overview</a></li>
+                                                <li><a href="research_supernova.html">Neutron star natal kicks</a></li>
+                                                <li><a href="research_systematics.html">Gravitational Wave Modeling Systematics</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- <li>
+                                            <span class="opener">Projects</span>
+                                            <ul>
+                                                <li><a href="project_spx">Unemployment modeling in Baltimore City using US Census data</a></li>
+                                                <li><a href="project_spx">Stock Market Predictions using ML</a></li>
+                                            </ul>
+                                        </li> -->
+                                        <li><a href="resume.html">Resume</a></li>
+                                    </ul>
+                                </nav>
+
+                            <!-- Section -->
+                                <section>
+                                    <header class="major">
+                                        <h2>Get in touch</h2>
+                                    </header>
+                                    <p>Please feel free to reach out about my research or any other interests.</p>
+                                    <ul class="contact">
+                                        <li class="icon solid fa-envelope"><a href="mailto: vkapil1@jh.edu">vkapil1@jh.edu</a></li>
+                                    </ul>
+                                </section>
+
+                            <!-- Footer -->
+                                <footer id="footer">
+                                    <p class="copyright">&copy; All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                                </footer>
+
+                        </div>
+                    </div>
+
+            </div>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
